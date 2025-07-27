@@ -56,6 +56,12 @@ function startBackgroundNoise() {
     
     if (selectedNoise === 'none') {
         stopBackgroundNoise();
+        // Mute and update sound icon when no background noise is selected
+        if (!isMuted) {
+            isMuted = true;
+            soundIcon.src = "images/sound-off.svg";
+            soundIcon.alt = "Sound Off";
+        }
         return;
     }
     
@@ -66,6 +72,13 @@ function startBackgroundNoise() {
     backgroundAudio = new Audio(`sounds/${selectedNoise}.mp3`);
     backgroundAudio.loop = true;
     backgroundAudio.volume = 0.3; // Set to 30% volume for background
+    
+    // Unmute and update sound icon when background noise starts
+    if (isMuted) {
+        isMuted = false;
+        soundIcon.src = "images/sound-on.svg";
+        soundIcon.alt = "Sound On";
+    }
     
     // Play the background noise
     backgroundAudio.play().then(() => {
@@ -139,7 +152,20 @@ function changeBackgroundNoise() {
     }
     
     if (selectedNoise === 'none') {
+        // Mute and update sound icon when no background noise is selected
+        if (!isMuted) {
+            isMuted = true;
+            soundIcon.src = "images/sound-off.svg";
+            soundIcon.alt = "Sound Off";
+        }
         return; // No preview for "none" option
+    }
+    
+    // Unmute and update sound icon when previewing background noise
+    if (isMuted) {
+        isMuted = false;
+        soundIcon.src = "images/sound-on.svg";
+        soundIcon.alt = "Sound On";
     }
     
     // Create new background audio for preview
