@@ -9,9 +9,11 @@ const breakSelection = document.getElementById("break-selection");
 const skipBreakBtn = document.getElementById("skip-break");
 const quoteDisplay = document.getElementById("quote-display");
 const quoteText = document.getElementById("quote-text");
+const themeToggle = document.querySelector('.theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
 
 let interval;
-let timeLeft = 1500;
+let timeLeft = 10;
 let isMuted = true; // Default to muted
 let isBreakMode = false; // Track if we're in break mode
 let backgroundAudio = null; // Background noise audio
@@ -258,7 +260,7 @@ function startBreak(breakTime) {
 
 function resetToWorkMode() {
     isBreakMode = false;
-    timeLeft = 1500; // Reset to work time
+    timeLeft = 10; // Reset to work time
     updateTimer();
 }
 
@@ -269,7 +271,7 @@ function stopTimer() {
 
 function resetTimer() {
    clearInterval(interval);
-    timeLeft = 1500;
+    timeLeft = 10;
     isBreakMode = false;
     updateTimer();
     hideBreakSelection();
@@ -296,3 +298,43 @@ resetEl.addEventListener("click", resetTimer);
 soundIcon.addEventListener("click", toggleSound);
 soundSelect.addEventListener("change", changeSound);
 noiseSelect.addEventListener("change", changeBackgroundNoise);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const soundIcon = document.getElementById('sound-icon');
+
+    function setTheme(isLight) {
+        if (isLight) {
+            document.body.classList.add('light-theme');
+            themeIcon.src = 'images/light.svg';
+            themeIcon.alt = 'Light mode';
+        } else {
+            document.body.classList.remove('light-theme');
+            themeIcon.src = 'images/dark.svg';
+            themeIcon.alt = 'Dark mode';
+        }
+        // Update sound icon filter for light/dark
+        if (document.body.classList.contains('light-theme')) {
+            soundIcon.style.filter = 'invert(0.3)';
+        } else {
+            soundIcon.style.filter = 'invert(1)';
+        }
+    }
+
+    // Default to dark mode
+    let isLightTheme = false;
+    setTheme(isLightTheme);
+
+    themeToggle.addEventListener('click', () => {
+        isLightTheme = !isLightTheme;
+        setTheme(isLightTheme);
+    });
+
+    themeToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            isLightTheme = !isLightTheme;
+            setTheme(isLightTheme);
+        }
+    });
+});
