@@ -657,20 +657,27 @@ body, .container, .break-instructions, .sound-instructions, .noise-instructions,
 }
 
 @media screen and (max-width: 767px) {
-    .theme-toggle {
-        margin-bottom: 15px;
-    }
-    .theme-icon {
+    .theme-icon,
+    .sound-icon {
         width: 25px;
         height: 25px;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    .theme-toggle,
+    .sound-toggle {
+        margin-bottom: 0 !important;
+        display: flex;
+        align-items: center;
+    }
+    .top-bar {
+        align-items: center;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .theme-toggle {
-        margin-bottom: 15px;
-    }
-    .theme-icon {
+    .theme-icon,
+    .sound-icon {
         width: 22px;
         height: 22px;
     }
