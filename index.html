@@ -8,8 +8,56 @@
   </head>
   <body>
     <div class="container">
+      <div class="sound-toggle">
+        <img src="images/sound-off.svg" alt="Sound Off" id="sound-icon" class="sound-icon">
+      </div>
+      
+      <div class="sound-selection">
+        <p class="sound-instructions">Choose your preferred alert sound:</p>
+        <select id="sound-select" class="sound-dropdown">
+          <option value="classic-bell.mp3">Classic Bell</option>
+          <option value="gentle-chime.mp3">Gentle Chime</option>
+          <option value="digital-ping.mp3">Digital Ping</option>
+          <option value="nature-bell.mp3">Nature Bell</option>
+          <option value="upbeat-alert.mp3">Upbeat Alert</option>
+        </select>
+      </div>
+      
+      <div class="background-noise-selection">
+        <p class="noise-instructions">Background noise for focus:</p>
+        <select id="noise-select" class="noise-dropdown">
+          <option value="none">No Background Noise</option>
+          <option value="rain">Rain</option>
+          <option value="coffee-shop">Coffee Shop</option>
+          <option value="white-noise">White Noise</option>
+          <option value="classical">Classical Music</option>
+          <option value="nature">Nature Sounds</option>
+        </select>
+      </div>
+      
       <h1 class="heading">Pomodoro Timer</h1>
       <p class="timer" id="timer">25:00</p>
+      
+      <!-- Motivational Quote Display -->
+      <div id="quote-display" class="quote-display">
+        <p id="quote-text" class="quote-text">Ready to focus? Let's get started!</p>
+      </div>
+      
+      <!-- Break Selection Interface -->
+      <div id="break-selection" class="break-selection hidden">
+        <h2 class="break-heading">Work Session Complete!</h2>
+        <p class="break-instructions">Choose your break duration:</p>
+        <div class="break-options">
+          <button class="break-option" data-time="300">5 min</button>
+          <button class="break-option" data-time="600">10 min</button>
+          <button class="break-option" data-time="900">15 min</button>
+          <button class="break-option" data-time="1200">20 min</button>
+          <button class="break-option" data-time="1500">25 min</button>
+          <button class="break-option" data-time="1800">30 min</button>
+        </div>
+        <button id="skip-break" class="skip-break">Skip Break</button>
+      </div>
+      
       <div class="button-wrapper">
         <button id="start" class="start">Start</button>
         <button id="stop" class="stop">Stop</button>
