@@ -1,0 +1,150 @@
+
+/* CSS RESETS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     font-size: 100%;
+}
+
+
+/* ROOT */
+
+:root {
+
+    /* COLORS */
+    --white: #fff;
+    --black: #000;
+    --heading-color: #2c3d50;
+    --start-button: #27ae60;
+    --stop-button: #c0392b;
+    --reset-button: #7f8c8d;
+
+    /* SITE MAX WIDTH */
+    --site-max-width: 1240px;
+
+    /* FONT SIZES */
+    --font-n: 1.125rem;
+    --font-m: 1.5rem;
+    --font-l: 4rem;
+    --font-xl: 5rem;
+    
+    
+}
+
+/* GENERAL CSS */
+
+html {
+    scroll-behavior: smooth;
+}
+
+ 
+/* IMAGES */
+
+img {
+    width: 100%;
+}
+
+
+/* LINKS */
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* MAIN CSS */
+
+.container {
+    margin: 0 auto;
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+}
+
+.heading {
+    font-size: var(--font-l);
+    margin-bottom: 10px;
+    color: var(--heading-color)
+
+}
+
+.timer {
+    font-size: var(--font-xl);
+    color: var(--heading-color);
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+
+button {
+    font-size: var(--font-m);
+    padding: 8px 16px;
+    color: var(--white);
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 100px;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease-in-out;
+}
+
+button:hover {
+    opacity: 0.8;
+
+}
+
+.start {
+    background-color: var(--start-button);
+
+}
+
+.stop {
+    background-color: var(--stop-button);
+
+}
+
+.reset {
+    background-color: var(--reset-button);
+
+}
+
+
+
+
+
+
+/* RESPONSIVE */
+
+       
+/* (MOBILE) RESPONSIVE BELOW FOR MAX WIDTH 600PX */
+
+@media screen and (max-width: 600px) {
+
+
+:root {
+
+    /* FONT SIZES */
+    --font-n: 1rem;
+    --font-m: 1.3rem;
+    --font-l: 3rem;
+    --font-xl: 4rem;
+    
+}
+
+}
+
+    
+
+
+
+
