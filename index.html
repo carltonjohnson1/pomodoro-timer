@@ -8,15 +8,37 @@
   </head>
   <body>
     <div class="container">
-      <div class="top-bar" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 20px;">
-        <div class="theme-toggle" tabindex="0" role="button" aria-label="Toggle light or dark mode">
-          <img src="images/dark.svg" alt="Dark mode" id="theme-icon" class="theme-icon" aria-label="Theme icon">
+      <div class="top-bar">
+        <div
+          class="theme-toggle"
+          tabindex="0"
+          role="button"
+          aria-label="Toggle light or dark mode"
+        >
+          <img
+            src="images/dark.svg"
+            alt="Dark mode"
+            id="theme-icon"
+            class="theme-icon"
+            aria-label="Theme icon"
+          />
         </div>
-        <div class="sound-toggle" tabindex="0" role="button" aria-label="Toggle sound on or off">
-          <img src="images/sound-off.svg" alt="Sound Off" id="sound-icon" class="sound-icon" aria-label="Sound icon">
+        <div
+          class="sound-toggle"
+          tabindex="0"
+          role="button"
+          aria-label="Toggle sound on or off"
+        >
+          <img
+            src="images/sound-off.svg"
+            alt="Sound Off"
+            id="sound-icon"
+            class="sound-icon"
+            aria-label="Sound icon"
+          />
         </div>
       </div>
-      
+
       <div class="sound-selection">
         <p class="sound-instructions">Choose your preferred alert sound:</p>
         <select id="sound-select" class="sound-dropdown">
@@ -27,7 +49,7 @@
           <option value="upbeat-alert.mp3">Upbeat Alert</option>
         </select>
       </div>
-      
+
       <div class="background-noise-selection">
         <p class="noise-instructions">Background noise for focus:</p>
         <select id="noise-select" class="noise-dropdown">
@@ -39,15 +61,17 @@
           <option value="nature">Nature Sounds</option>
         </select>
       </div>
-      
+
       <h1 class="heading">Pomodoro Timer</h1>
       <p class="timer" id="timer">25:00</p>
-      
+
       <!-- Motivational Quote Display -->
       <div id="quote-display" class="quote-display">
-        <p id="quote-text" class="quote-text">Ready to focus? Let's get started!</p>
+        <p id="quote-text" class="quote-text">
+          Ready to focus? Let's get started!
+        </p>
       </div>
-      
+
       <!-- Break Selection Interface -->
       <div id="break-selection" class="break-selection hidden">
         <h2 class="break-heading">Work Session Complete!</h2>
@@ -62,7 +86,7 @@
         </div>
         <button id="skip-break" class="skip-break">Skip Break</button>
       </div>
-      
+
       <div class="button-wrapper">
         <button id="start" class="start">Start</button>
         <button id="stop" class="stop">Stop</button>
