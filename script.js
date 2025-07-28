@@ -48,7 +48,7 @@ const completionMessages = [
 ];
 
 // Creation of audio element for the alert sound
-let audioAlert = new Audio('sounds/classic-bell.mp3'); // Default sound
+let audioAlert = null; // Will be created when a sound is selected
 
 // Background noise management
 function startBackgroundNoise() {
@@ -56,8 +56,8 @@ function startBackgroundNoise() {
     
     if (selectedNoise === 'none') {
         stopBackgroundNoise();
-        // Mute and update sound icon when no background noise is selected
-        if (!isMuted) {
+        // Only mute if no alert sound is selected either
+        if (soundSelect.value === 'none' && !isMuted) {
             isMuted = true;
             soundIcon.src = "images/sound-off.svg";
             soundIcon.alt = "Sound Off";
@@ -127,6 +127,16 @@ function changeSound() {
         audioAlert.currentTime = 0;
     }
     
+    if (selectedSound === 'none') {
+        // Check if background noise is also 'none' - if so, mute the sound icon
+        if (noiseSelect.value === 'none' && !isMuted) {
+            isMuted = true;
+            soundIcon.src = "images/sound-off.svg";
+            soundIcon.alt = "Sound Off";
+        }
+        return; // No preview for "none" option
+    }
+    
     audioAlert = new Audio(`sounds/${selectedSound}`);
     
     // Automatically turn sound on when a sound is selected
@@ -152,8 +162,8 @@ function changeBackgroundNoise() {
     }
     
     if (selectedNoise === 'none') {
-        // Mute and update sound icon when no background noise is selected
-        if (!isMuted) {
+        // Only mute if no alert sound is selected either
+        if (soundSelect.value === 'none' && !isMuted) {
             isMuted = true;
             soundIcon.src = "images/sound-off.svg";
             soundIcon.alt = "Sound Off";
@@ -238,8 +248,8 @@ function startTimer() {
             // Add visual effects
             container.classList.add('timer-complete');
             timer.classList.add('timer-complete');
-            // Play the audio alert only if not muted
-            if (!isMuted) {
+            // Play the audio alert only if not muted and an alert sound is selected
+            if (!isMuted && audioAlert) {
                 audioAlert.play();
             }
             // Remove visual effects after 3 seconds
