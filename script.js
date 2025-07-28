@@ -13,7 +13,7 @@ const themeToggle = document.querySelector('.theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 
 let interval;
-let timeLeft = 10;
+let timeLeft = 1500;
 let isMuted = true; // Default to muted
 let isBreakMode = false; // Track if we're in break mode
 let backgroundAudio = null; // Background noise audio
@@ -293,7 +293,7 @@ function startBreak(breakTime) {
 
 function resetToWorkMode() {
     isBreakMode = false;
-    timeLeft = 10; // Reset to work time
+    timeLeft = 1500; // Reset to work time
     updateTimer();
 }
 
@@ -305,7 +305,7 @@ function stopTimer() {
 
 function resetTimer() {
    clearInterval(interval);
-    timeLeft = 10;
+    timeLeft = 1500;
     isBreakMode = false;
     updateTimer();
     hideBreakSelection();
