@@ -307,7 +307,7 @@ button {
 .quote-display {
     margin: 20px 0 30px;
     padding: 15px 20px;
-    background: linear-gradient(135deg, #23272f, #181c22);
+    background: linear-gradient(135deg, #660066, #800080); /* Unified purple gradient for better contrast */
     border-radius: 10px;
     box-shadow: 0 3px 12px rgba(52, 152, 219, 0.3);
     transition: all 0.5s ease;
@@ -326,7 +326,7 @@ button {
 }
 
 .quote-display.completed {
-    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    background: linear-gradient(135deg, #660066, #800080);
     box-shadow: 0 3px 12px rgba(39, 174, 96, 0.3);
     animation: celebrate 0.6s ease-out;
 }

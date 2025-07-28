@@ -105,7 +105,7 @@ function showWorkQuote() {
     const quote = getRandomQuote(workQuotes);
     quoteText.textContent = quote;
     quoteDisplay.classList.remove('completed');
-    quoteDisplay.style.background = 'linear-gradient(135deg, #3498db, #2980b9)';
+    quoteDisplay.style.background = 'linear-gradient(135deg, #660066, #800080)';
     quoteDisplay.style.boxShadow = '0 3px 12px rgba(52, 152, 219, 0.3)';
 }
 
@@ -113,7 +113,7 @@ function showCompletionMessage() {
     const message = getRandomQuote(completionMessages);
     quoteText.textContent = message;
     quoteDisplay.classList.add('completed');
-    quoteDisplay.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+    quoteDisplay.style.background = 'linear-gradient(135deg, #660066, #800080)';
     quoteDisplay.style.boxShadow = '0 3px 12px rgba(39, 174, 96, 0.3)';
 }
 
