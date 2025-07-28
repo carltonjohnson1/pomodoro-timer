@@ -214,6 +214,8 @@ function updateTimer() {
 }
 
 function startTimer() {
+    clearInterval(interval); // Prevent multiple intervals!
+    startEl.disabled = true; // Disable Start button while timer is running
     // Start background noise when timer starts
     startBackgroundNoise();
     
@@ -224,41 +226,36 @@ function startTimer() {
     
     interval = setInterval(() => {
         timeLeft--;
-    updateTimer();
-    if(timeLeft === 0) {
-        clearInterval(interval);
-        
-        // Stop background noise when timer completes
-        stopBackgroundNoise();
-        
-        // Visual notification effects
-        const container = document.querySelector('.container');
-        const timer = document.querySelector('.timer');
-        
-        // Add visual effects
-        container.classList.add('timer-complete');
-        timer.classList.add('timer-complete');
-        
-        // Play the audio alert only if not muted
-        if (!isMuted) {
-            audioAlert.play();
+        if (timeLeft < 0) timeLeft = 0; // Prevent negative time
+        updateTimer();
+        if(timeLeft === 0) {
+            clearInterval(interval);
+            // Stop background noise when timer completes
+            stopBackgroundNoise();
+            // Visual notification effects
+            const container = document.querySelector('.container');
+            const timer = document.querySelector('.timer');
+            // Add visual effects
+            container.classList.add('timer-complete');
+            timer.classList.add('timer-complete');
+            // Play the audio alert only if not muted
+            if (!isMuted) {
+                audioAlert.play();
+            }
+            // Remove visual effects after 3 seconds
+            setTimeout(() => {
+                container.classList.remove('timer-complete');
+                timer.classList.remove('timer-complete');
+            }, 3000);
+            if (!isBreakMode) {
+                // Work session completed - show completion message and break selection
+                showCompletionMessage();
+                showBreakSelection();
+            } else {
+                // Break completed - reset to work mode
+                resetToWorkMode();
+            }
         }
-        
-        // Remove visual effects after 3 seconds
-        setTimeout(() => {
-            container.classList.remove('timer-complete');
-            timer.classList.remove('timer-complete');
-        }, 3000);
-        
-        if (!isBreakMode) {
-            // Work session completed - show completion message and break selection
-            showCompletionMessage();
-            showBreakSelection();
-        } else {
-            // Break completed - reset to work mode
-            resetToWorkMode();
-        }
-    }
     }, 1000)
 }
 
@@ -293,6 +290,7 @@ function resetToWorkMode() {
 function stopTimer() {
      clearInterval(interval);
      stopBackgroundNoise();
+     startEl.disabled = false; // Re-enable Start button when stopped
 }
 
 function resetTimer() {
@@ -302,6 +300,7 @@ function resetTimer() {
     updateTimer();
     hideBreakSelection();
     stopBackgroundNoise();
+    startEl.disabled = false; // Re-enable Start button when reset
 }
 
 // Break option click handlers
